@@ -30,12 +30,6 @@
                         <img class="d-block img-fluid" src="{{ component.banner_image.url }}" alt="Second slide">
                     </div>
                     {% endfor %}
-                    <!--                    <div class="carousel-item">-->
-                    <!--                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">-->
-                    <!--                    </div>-->
-                    <!--                    <div class="carousel-item">-->
-                    <!--                        <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">-->
-                    <!--                    </div>-->
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -55,7 +49,7 @@
                                          alt=""></a>
                         <div class="card-body">
                             <h5 class="card-subtitle" style="margin-bottom:3px">
-                                <a href="{% url 'comp_detail_by_id' component_id=component.component.id %}">{{component.component.name}}</a>
+                                <a href="{% url 'comp_detail_by_id' component_id=component.id %}">{{component.component.name}}</a>
                             </h5>
                             <h5>{{component.technology.name}}</h5>
                             <p class="card-text">{{component.description|slice:"0:80"}} ...</p>
