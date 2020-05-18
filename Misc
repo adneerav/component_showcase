@@ -1,0 +1,29 @@
+from component.models import Component, Detail, DetailImage
+from technology.models import Technology
+
+
+# get Component list by component Primary key
+>>> comp_list_by_id = Detail.objects.filter(component__pk=1)
+
+# get list of component list by technology
+# comp list by iOS as per data entered
+>>> ios_comp = Detail.objects.filter(technology__id='2')
+
+# comp list by android as per data entered
+>>> android_comp = Detail.objects.filter(technology__id='1')
+
+#to get component details of particular technology
+#eg. XYZ Component of Android Technology
+android_api_component = Detail.objects.get(component__id='1',technology__id='1' )
+
+#to get components from technology queryset
+    eg Technology = 'Android' and fetch all components of Android technologies
+
+Step 1 :  Find Technology query set of 'Android'
+        eg : android = Technology.objects.get(name='Android')
+Step 2 : Find all the components from the technology objects.
+        Below will give all the android technology components from android query set
+        eg : only_android_components = android.technologies.all()
+    Here technologies is related_name defined in Detail model
+
+
