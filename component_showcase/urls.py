@@ -23,6 +23,7 @@ admin.site.site_header = 'HiddenBrains Component Admin Panel'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('component.urls')),
+    path('', include('website.urls'))
 ]
 
 urlpatterns = urlpatterns + \

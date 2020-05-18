@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'language.apps.LanguageConfig',
     'technology.apps.TechnologyConfig',
     'admin_interface',
-    'colorfield'
+    'colorfield',
+    'website'
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('DB_NAME', 'component_showcase'),
         'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'hbdev'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'root'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'DB_PORT': os.getenv('DB_PORT', '3344'),
     }
