@@ -1,4 +1,5 @@
 from django.core.exceptions import PermissionDenied
+from django.db.models import Q
 from django.shortcuts import render, get_list_or_404
 
 # Create your views here.
@@ -12,6 +13,24 @@ def home(request):
         "components": _get_components(),
     }
     return render(request, 'components/home.html', context=data)
+
+
+def search(request):
+    if request.method == 'POST':
+        search_text = request.POST["txt_search_query"]
+        qs_search_result = Detail.objects.filter(Q(description__icontains='{}'.format(search_text))
+                                                 | Q(component__name__icontains='{}'.format(search_text))
+                                                 | Q(language__name__icontains='{}'.format(search_text))
+                                                 | Q(technology__name__icontains='{}'.format(search_text))).distinct()
+        response_data = {
+            "components": qs_search_result,
+            'is_technology_wise': False,
+            'search_text':search_text,
+            "title": ("Search %s", search_text),
+        }
+        return render(request, 'components/components_page.html', context=response_data)
+    else:
+        return PermissionDenied
 
 
 def components(request, name):

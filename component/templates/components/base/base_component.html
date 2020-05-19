@@ -32,7 +32,24 @@
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div style="display: flex; justify-content: space-around">
+            <div class="input-group" style="margin-right:20px">
+                <form id="frm_view_detail" method="post" style="display: flex; justify-content: space-around"
+                      action="{% url 'searching' %}">
+                    {% csrf_token %}
+<!--                    TODO fetch/passing search text from one page another-->
+
+<!--                    {% with txt_search_value="" %}-->
+<!--                    {% if search_text is not None or search_text is not '' %}-->
+<!--                        txt_search_value = search_text-->
+<!--                    {% endif%}-->
+                    <input type="text" name="txt_search_query" class="form-control"  placeholder="Search for...">
+                    {% endwith %}
+                    <button class="btn btn-secondary" type="submit" value="{{txt_search_query}}"
+                            style="margin-left:6px">Go!
+                    </button>
+                </form>
+            </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'home' %}">Home
@@ -44,6 +61,7 @@
                 </li>
             </ul>
         </div>
+    </div>
     </div>
 </nav>
 
