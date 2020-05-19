@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Control ShowCase</title>
+    <style>
+        #component{
+            margin: 1%;
+            border: solid;
+            border-radius: 20px;
+            color: black;
+        }
+
+
+
+
+
+    </style>
 </head>
 <body>
 <center>
+
+    <center> Total {{components_count}} component(s)</center>
+
+    {% for component in components %}
+    <div id="component">
+        <a href="{{component.git_url}}"><h4>{{component.component}}</h4></a>
+        <p>{{component.technology}}</p>
+        <p>Updated on {{component.updated_date}}</p>
+    </div>
+    {% endfor %}
+
     <a href="{% url 'add' %}">Add Component</a>
 </center>
 </body>
