@@ -11,7 +11,8 @@ Basic front UI to display components
 
 
 Next in Progress :
-    Component wise rating
-    Searching from Component details.
+    Component wise rating    
     Language wise component display
+    Paging
+    Load More
     User's model mapping.(As a contributor)

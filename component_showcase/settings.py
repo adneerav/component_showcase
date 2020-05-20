@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'language.apps.LanguageConfig',
     'technology.apps.TechnologyConfig',
     'admin_interface',
-    'colorfield'
+    'colorfield',
 ]
 
 MIDDLEWARE = [

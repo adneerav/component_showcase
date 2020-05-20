@@ -37,14 +37,7 @@
                 <form id="frm_view_detail" method="post" style="display: flex; justify-content: space-around"
                       action="{% url 'searching' %}">
                     {% csrf_token %}
-<!--                    TODO fetch/passing search text from one page another-->
-
-<!--                    {% with txt_search_value="" %}-->
-<!--                    {% if search_text is not None or search_text is not '' %}-->
-<!--                        txt_search_value = search_text-->
-<!--                    {% endif%}-->
                     <input type="text" name="txt_search_query" class="form-control"  placeholder="Search for...">
-                    {% endwith %}
                     <button class="btn btn-secondary" type="submit" value="{{txt_search_query}}"
                             style="margin-left:6px">Go!
                     </button>
