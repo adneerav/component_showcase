@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,10 +40,8 @@ INSTALLED_APPS = [
     'component.apps.ComponentConfig',
     'language.apps.LanguageConfig',
     'technology.apps.TechnologyConfig',
-    'admin_interface',
-    'colorfield',
 ]
-
+AUTH_USER_MODEL = 'account.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -78,10 +77,8 @@ WSGI_APPLICATION = 'component_showcase.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'component_showcase'),
+        'NAME': os.getenv('DB_NAME', 'component_showcase_account'),
         'USER': os.getenv('DB_USER', 'root'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'hbdev'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
