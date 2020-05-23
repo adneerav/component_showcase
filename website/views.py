@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from component.models import Detail, Component
+from technology.models import Technology
 
 from django.forms import modelform_factory
 
@@ -12,9 +13,12 @@ DetailInstance = modelform_factory(Detail, exclude=[])
 def home(request):
     components = Detail.objects.all()
     components_count = Detail.objects.count()
+    technologies = Technology.objects.all()
+    print(technologies)
     return render(request, 'website/index.html', {
         'components_count': components_count,
-        'components': components
+        'components': components,
+        'technologies': technologies
     })
 
 
