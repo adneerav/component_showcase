@@ -1,0 +1,28 @@
+@media screen and (min-width:240px) and (max-width:1279px) {
+body { -webkit-text-size-adjust: none;}
+input, textarea, button, select { appearance: none; -moz-appearance: none; -webkit-appearance: none; }
+input[type="radio"] { appearance: radio; -moz-appearance: radio; -webkit-appearance: radio; }
+input[type="checkbox"] { appearance: checkbox; -moz-appearance: checkbox; -webkit-appearance: checkbox; }
+select { background-image: url(../images/select-arr.png); background-repeat: no-repeat; background-position: right center; }
+}
+@media screen and (min-width:1024px) and (max-width:1279px) {
+.blue-bar .nav-tabs .nav-link{padding:20px 30px;}
+	h2.section-heading{font-size: 36px; margin: 22px;}
+}
+@media screen and (min-width:768px) and (max-width:1023px) {
+	.blue-bar .nav-tabs .nav-link{padding:20px 25px;}
+	h2.section-heading{font-size: 34px; margin: 20px;}
+	table.custmtble th{font-size: 16px;}
+	table.custmtble th, table.custmtble td{padding: 10px;}
+}
+
+@media screen and (max-width:767px) {
+	.blue-bar .nav-tabs .nav-link{padding: 15px 30px; font-size: 18px;}
+	h2.section-heading{font-size: 24px; margin: 15px;}
+	table.custmtble th{ font-size: 15px; padding: 10px;}
+	table.custmtble tr td{padding: 10px; font-size: 14px; }
+}
+@media screen and (min-width:200px) and (max-width:767px) {
+body { padding-bottom: 0; } 
+#footer { position: inherit; }
+}

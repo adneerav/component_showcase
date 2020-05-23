@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,10 @@
     {% endfor %}
 
     <a href="{% url 'add' %}">Add Component</a>
+
+    <a href="{% static 'css/media.css' %}">{% static 'css/media.css' %}</a>
+
+
 </center>
 </body>
 </html>

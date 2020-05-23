@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Control ShowCase | HB</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/font-awesome/css/all.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/wow-animation/css/animate.css' %}" >
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/custom-designer.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/custom-developer.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'css/media.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="main-container" class="main-container">
+  <div id="inner-container" class="inner-container">
+    <div id="header" class="header">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container"> <a class="navbar-brand" href="https://www.hiddenbrains.com/" target="_blank"><img src="{% static 'images/hb-loog.jpg' %}"  alt="logo-image"/></a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+          <div class="navbar-collapse collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+				<li>
+					<div class="custmserch h-100">
+						<div class="d-flex justify-content-center h-100">
+						  <div class="searchbar">
+							<input class="search_input" type="text" name="" placeholder="Search...">
+							<a href="javascript:;" class="search_icon"><i class="fas fa-search"></i></a>
+						  </div>
+						</div>
+					  </div>
+				</li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div id="middle">
+      <section class="common-section services">
+		  <div class="blue-bar">
+			  <ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item wow fadeInDown">
+				<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">iOS</a>
+			  </li>
+			  <li class="nav-item wow fadeInUp">
+				<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Android</a>
+			  </li>
+			  </ul>
+		  </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">          
+							
+				<h2 class="section-heading wow fadeInLeft">Search your code</h2>
+				<div class="tab-content" id="myTabContent">
+				  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+					<table class="table custmtble">
+						  <thead>
+							<tr class="wow fadeInDown">
+							  <th scope="col">Sr. No</th>
+							  <th scope="col">Control Name </th>
+							  <th scope="col">Control Image / GIF Control </th>
+							  <th scope="col">Video Control</th>
+							  <th scope="col">Code link</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr class="fadeInUp">
+							  <td>1</td>
+							  <td>Search Control </td>
+							  <td><img src="{% static 'images/cntrol-img.jpg' %}" alt="controlimage"/></td>
+							  <td><img src="{% static 'images/vide-cntrol.jpg' %}" alt="video-control"/></td>
+							  <td><a href="https://github.com/cymcsg/Awesome-Mobile-UI" target="_blank">https://github.com/cymcsg/Awesome-Mobile-UI</a></td>
+							</tr>
+							  <tr class="fadeInUp">
+							  <td>2</td>
+							  <td>Search Control </td>
+							  <td><img src="{% static 'images/cntrol-img.jpg' %}" alt="controlimage"/></td>
+							  <td><img src="{% static 'images/vide-cntrol.jpg' %}" alt="video-control"/></td>
+							  <td><a href="https://github.com/cymcsg/Awesome-Mobile-UI" target="_blank">https://github.com/cymcsg/Awesome-Mobile-UI</a></td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+				  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+					<table class="table custmtble">
+						  <thead>
+							<tr>
+							  <th scope="col">Sr. No</th>
+							  <th scope="col">Control Name </th>
+							  <th scope="col">Control Image / GIF Control </th>
+							  <th scope="col">Video Control</th>
+							  <th scope="col">Code link</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr>
+							  <td>1</td>
+							  <td>Search Control Android</td>
+							  <td><img src="{% static 'images/cntrol-img.jpg' %}" alt="controlimage"/></td>
+							  <td><img src="{% static 'images/vide-cntrol.jpg' %}" alt="video-control"/></td>
+							  <td><a href="https://github.com/cymcsg/Awesome-Mobile-UI" target="_blank">https://github.com/cymcsg/Awesome-Mobile-UI</a></td>
+							</tr>
+							  <tr>
+							  <td>2</td>
+							  <td>Search Control </td>
+							  <td><img src="{% static 'images/cntrol-img.jpg' %}" alt="controlimage"/></td>
+							  <td><img src="{% static 'images/vide-cntrol.jpg' %}" alt="video-control"/></td>
+							  <td><a href="https://github.com/cymcsg/Awesome-Mobile-UI" target="_blank">https://github.com/cymcsg/Awesome-Mobile-UI</a></td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+				
+			  </div>                                             
+          </div>
+        </div>
+      </section>
+      
+      
+
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/wow-animation/js/wow.min.js' %}"></script>
+<script src="{% static 'js/custom-designer.js' %}"></script>
+<script src="{% static 'js/custom-developer.js' %}"></script>
+<script>
+	new WOW().init();
+</script>
+</body>
+</html>

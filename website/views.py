@@ -12,7 +12,7 @@ DetailInstance = modelform_factory(Detail, exclude=[])
 def home(request):
     components = Detail.objects.all()
     components_count = Detail.objects.count()
-    return render(request, 'website/home.html', {
+    return render(request, 'website/index.html', {
         'components_count': components_count,
         'components': components
     })
