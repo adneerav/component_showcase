@@ -41,14 +41,18 @@
       <section class="common-section services">
 		  <div class="blue-bar">
 			  <ul class="nav nav-tabs" id="myTab" role="tablist">
+<!--				  <li class="nav-item wow fadeInDown">-->
+<!--					  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{technology.name}}</a>-->
+<!--				  </li>-->
 				  {% for technology in technologies %}
 					  <li class="nav-item wow fadeInDown">
-						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{{technology.name}}</a>
+						<a class="nav-link" id="home-tab" data-toggle="tab" href="" onclick="pageready(); return false;"  role="tab" aria-controls="home" aria-selected="true">{{technology.name}}</a>
 					  </li>
 				  {% endfor %}
-				  <li class="nav-item wow fadeInUp">
-					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Android</a>
-				  </li>
+
+<!--				  <li class="nav-item wow fadeInUp">-->
+<!--					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">HHHH</a>-->
+<!--				  </li>-->
 			  </ul>
 		  </div>
         <div class="container">

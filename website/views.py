@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.template.defaulttags import register
+
 from component.models import Detail, Component
 from technology.models import Technology
 
@@ -10,11 +12,18 @@ DetailInstance = modelform_factory(Detail, exclude=[])
 
 # Create your views here.
 
+# @register.simple_tag
+# def related_deltas():
+#     return "Hiii"
+
 def home(request):
     components = Detail.objects.all()
     components_count = Detail.objects.count()
     technologies = Technology.objects.all()
-    print(technologies)
+
+    if (request.method == 'GET'):
+        print(request.GET)
+
     return render(request, 'website/index.html', {
         'components_count': components_count,
         'components': components,
