@@ -10,51 +10,59 @@
     {% block title_content %}
     <title>HiddenBrains Components</title>
     {% endblock %}
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/shop-homepage.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/media.css' %}" rel="stylesheet">
     {% block header_content %}
-    {%endblock%}
+    {% endblock %}
 </head>
 
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-        {% block nav_header %}
-        <a class="navbar-brand" href="{% url 'home' %}">HiddenBrains</a>
-        {% endblock %}
+        <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/hb-logo.svg' %}" alt="logo"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div style="display: flex; justify-content: space-around">
-            <div class="input-group" style="margin-right:20px">
-                <form id="frm_view_detail" method="post" style="display: flex; justify-content: space-around"
-                      action="{% url 'searching' %}">
-                    {% csrf_token %}
-                    <input type="text" name="txt_search_query" class="form-control"  placeholder="Search for...">
-                    <button class="btn btn-secondary" type="submit" value="{{txt_search_query}}"
-                            style="margin-left:6px">Go!
-                    </button>
-                </form>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="justify-content-center align-items-center">
+                        {% if search_text is none or  search_text is ''%}
+                        <div class="search_container">
+                            <div class="search">
+                                <form id="frm_view_detail" method="post" action="{% url 'searching' %}">
+                                    {% csrf_token %}
+                                    <input type="text" placeholder="Search..." name="txt_search_query">
+                                    <button type="submit" class="go_btn" name="btn_component_detail">Go <i
+                                            class="fas fa-arrow-right"></i></button>
+
+                                </form>
+                            </div>
+                            <div class="search_btn search_open">
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'home' %}">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="https://www.hiddenbrains.com">About</a>
+                    <a class="nav-link" target="_blank" href="https://www.hiddenbrains.in">About</a>
                 </li>
             </ul>
         </div>
-    </div>
     </div>
 </nav>
 
@@ -64,16 +72,14 @@
 
 <!-- Footer -->
 {% block footer %}
-<footer class="py-5 bg-dark">
+<footer class="py-3 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright HiddenBrains {% now "Y" %}</p>
+        <p class="m-0 text-center text-white">&copy; 2003-2020 Hidden Brains InfoTech, USA & India</p>
     </div>
-
-
 </footer>
-
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'jquery/jquery.min.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '/js/custom.js' %}"></script>
 {% endblock %}
 </html>

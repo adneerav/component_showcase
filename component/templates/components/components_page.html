@@ -10,39 +10,27 @@
 <title>Components List</title>
 {% endblock %}
 {% block content %}
-<main role="main">
-    <div class="album py-5 bg-light">
-        <div class="container">
-
+<div class="col-lg-9">
+    <section class="technology-grid" id="product-configureit-dev">
+        <div class="consulting-box">
             <div class="row">
                 {% for component in components %}
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top"
-                             data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text={{component.component.name}}"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">{{ component.description|slice:"0:100" }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <form id="frm_view_detail" method="post" action="{% url 'component_detail' %}">
-                                        {% csrf_token %}
-                                        <hidden value="{{ component.id }}" id="hidden_comp_id"></hidden>
-                                        <button type="submit" name="btn_component_detail"
-                                                class="btn btn-sm btn-outline-secondary"
-                                                value="{{ component.id }}">View
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
+                <div class="col-lg-4 col-sm-4 col-xs-12 mb-tblt">
+                    <div class="conslt-list">
+                        <img src="{{ component.banner_image.url }}" alt=""/>
+                        <div class="conslt-lbl">
+                            <h3><a href="{% url 'comp_detail_by_id' component_id=component.id %}">{{component.component.name}}</a>
+                            </h3>
+                            <h6>{{component.technology.name}}</h6>
+                            <p>{{component.description|slice:"0:250"}}</p>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
-    </div>
-</main>
+    </section>
+</div>
 {% endblock %}
 
 {% block footer %}

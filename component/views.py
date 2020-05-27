@@ -25,7 +25,7 @@ def search(request):
         response_data = {
             "components": qs_search_result,
             'is_technology_wise': False,
-            'search_text':search_text,
+            'search_text': search_text,
             "title": ("Search %s", search_text),
         }
         return render(request, 'components/components_page.html', context=response_data)
