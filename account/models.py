@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+from language.models import Language
+from technology.models import Technology
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, username, password, full_name, active=False,
@@ -86,7 +89,33 @@ class User(AbstractBaseUser):
         return self.active
 
     def has_perm(self, perm, obj=None):
+        if self.is_admin:
+            return True
+        if self.is_staff:
+            if perm == 'account.add_user' or perm == 'account.change_user' or \
+                    perm == 'account.delete_user':
+                return False
         return True
 
     def has_module_perms(self, app_label):
         return True
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=255, help_text="Contributors's first name",
+                                 null=False, blank=False)
+    nick_name = models.CharField(max_length=50, help_text="Contributors's Nick name",
+                                 null=False, blank=False)
+    bio = models.TextField(help_text="Contributors bio")
+    skype_name = models.CharField(max_length=50, help_text="skype name")
+    mobile_number = models.CharField(max_length=15, help_text="Contact(Mobile) number")
+    profile_image = models.ImageField(upload_to='uploads/users/profile/', db_column='profile_picture'
+                                      , blank=True, null=True)
+    technologies = models.ManyToManyField(Technology, related_name="tech_profiles",
+                                          help_text="User may know multiple technology.")
+    languages = models.ManyToManyField(Language, related_name="language_profiles",
+                                       help_text="User may know multiple language.")
+    github_account = models.CharField(max_length=500, help_text="github.com account profile url.")
+    stackoverflow_account = models.CharField(max_length=500, help_text="stackoverflow.com account profile url.")
+    personal_blog_url = models.CharField(max_length=500, help_text="Personal blog or website url.")

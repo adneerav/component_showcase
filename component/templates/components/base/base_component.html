@@ -37,7 +37,7 @@
                 <form id="frm_view_detail" method="post" style="display: flex; justify-content: space-around"
                       action="{% url 'searching' %}">
                     {% csrf_token %}
-                    <input type="text" name="txt_search_query" class="form-control"  placeholder="Search for...">
+                    <input type="text" name="txt_search_query" class="form-control" placeholder="Search for...">
                     <button class="btn btn-secondary" type="submit" value="{{txt_search_query}}"
                             style="margin-left:6px">Go!
                     </button>
@@ -51,6 +51,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://www.hiddenbrains.com">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
             </ul>
         </div>
@@ -68,10 +71,7 @@
     <div class="container">
         <p class="m-0 text-center text-white">Copyright HiddenBrains {% now "Y" %}</p>
     </div>
-
-
 </footer>
-
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'jquery/jquery.min.js' %}"></script>
 <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>

@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'account',
+    # 'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,10 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_auth',  # new!
+    'rest_framework.authtoken',
     'component.apps.ComponentConfig',
+    'account.apps.AccountConfig',
     'language.apps.LanguageConfig',
     'technology.apps.TechnologyConfig',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'account.backend.CustomAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
 AUTH_USER_MODEL = 'account.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,6 +62,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend'
 ]
 
 ROOT_URLCONF = 'component_showcase.urls'
@@ -121,7 +136,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'component/static')
+    os.path.join(BASE_DIR, 'component/static'),
+    os.path.join(BASE_DIR, 'account/static'),
 ]
 
 STATIC_URL = '/static/'

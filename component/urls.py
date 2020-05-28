@@ -1,8 +1,9 @@
 from django.conf.urls import url
 from django.urls import path
+
+from account import urls
 from component import views
 
-# app_name = "component"
 urlpatterns = [
     path('', views.home, name='home'),
     path('components/<str:name>/', views.components, name='component_tech'),
@@ -12,3 +13,4 @@ urlpatterns = [
     url('details', views.detail, name='component_detail'),
 
 ]
+urlpatterns = urlpatterns + urls.urlpatterns
