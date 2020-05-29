@@ -18,10 +18,11 @@ def home(request):
 def search(request):
     if request.method == 'POST':
         search_text = request.POST["txt_search_query"]
-        qs_search_result = Detail.objects.filter(Q(description__icontains='{}'.format(search_text))
-                                                 | Q(component__name__icontains='{}'.format(search_text))
-                                                 | Q(language__name__icontains='{}'.format(search_text))
-                                                 | Q(technology__name__icontains='{}'.format(search_text))).distinct()
+        qs_search_result = Detail.objects.filter \
+            (Q(description__icontains='{}'.format(search_text))
+             | Q(component__name__icontains='{}'.format(search_text))
+             | Q(language__name__icontains='{}'.format(search_text))
+             | Q(technology__name__icontains='{}'.format(search_text))).distinct()
         response_data = {
             "components": qs_search_result,
             'is_technology_wise': False,

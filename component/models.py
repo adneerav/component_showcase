@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 from django.utils.safestring import mark_safe
 
+from account.models import Profile
 from language.models import Language
 from technology.models import Technology
 from django.utils.translation import gettext_lazy as _
@@ -24,6 +25,8 @@ class Detail(models.Model):
     component = models.ForeignKey(Component, on_delete=models.CASCADE, related_name='components_detail',
                                   related_query_name='component_detail', null=False, blank=False)
     technology = models.ForeignKey(Technology, on_delete=models.CASCADE, related_name="technologies")
+    contributors = models.ManyToManyField(Profile, related_name="component_contributors",
+                                          help_text="Developers who worked on component")
     language = models.ManyToManyField(Language, related_name="languages")
     banner_image = models.ImageField(upload_to='uploads/component/images/banner/', blank=True, null=True)
     description = models.TextField(blank=False, null=False)
