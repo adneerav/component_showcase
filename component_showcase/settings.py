@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'component_showcase.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'component_showcase_account'),
+        'NAME': os.getenv('DB_NAME', 'component_showcase'),
         'USER': os.getenv('DB_USER', 'root'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'hbdev'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
