@@ -14,6 +14,8 @@ class UserManager(BaseUserManager):
             raise ValueError("Username required.")
         if not password:
             raise ValueError("Password required.")
+        if admin and not full_name:
+            full_name = username
         if not full_name:
             raise ValueError("Full name required.")
         user_obj = self.model(
@@ -35,9 +37,9 @@ class UserManager(BaseUserManager):
             username=username,
             password=password,
             full_name=full_name,
-            is_staff=True,
-            is_active=True,
-            is_confirmed_email=True
+            staff=True,
+            active=True,
+            confirmed_email=True
         )
         return user
 
@@ -46,11 +48,12 @@ class UserManager(BaseUserManager):
             email=email,
             username=username,
             password=password,
-            is_staff=True,
-            is_admin=True,
+            staff=True,
+            admin=True,
+            active=True,
+            confirmed_email=True,
             full_name=full_name,
-            is_active=True,
-            is_confirmed_email=True
+
         )
         return user
 
@@ -119,3 +122,6 @@ class Profile(models.Model):
     github_account = models.CharField(max_length=500, help_text="github.com account profile url.")
     stackoverflow_account = models.CharField(max_length=500, help_text="stackoverflow.com account profile url.")
     personal_blog_url = models.CharField(max_length=500, help_text="Personal blog or website url.")
+
+    def __str__(self):
+        return "{} aka {}".format(self.full_name, self.nick_name)

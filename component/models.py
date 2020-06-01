@@ -47,6 +47,9 @@ class Detail(models.Model):
     def get_languages(self):
         return ",".join([str(t) for t in self.language.all()])
 
+    def get_contributor_name(self):
+        return self.contributors
+
     class Meta:
         verbose_name = 'Component Detail'
         verbose_name_plural = 'Component Details'

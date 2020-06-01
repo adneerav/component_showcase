@@ -1,4 +1,5 @@
 {% extends 'components/base/base_component.html' %}
+{% load static %}
 {% block title_content%}
 <title>{{detail.component.name}} for {{detail.technology.name}} in {{detail.get_languages}}</title>
 {% endblock %}
@@ -34,6 +35,12 @@
         <!-- /.row -->
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
+             <div class="card mb-4 languages-card">
+                <h5 class="card-header">Download Source</h5>
+                <div class="card-body">
+                    <a class="navbar-brand" href="{{detail.git_url}}"><img src="{% static 'images/github-logo.png' %}" alt="Github Clone URL"/></a>
+                </div>
+            </div>
             <!-- Categories Widget -->
             <div class="card mb-4 languages-card">
                 <h5 class="card-header">{% if languages.count == 1 %}Language{% else %}Languages{% endif %}</h5>

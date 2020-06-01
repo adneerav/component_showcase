@@ -16,7 +16,7 @@ class UserAdmin(BaseUserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'username', 'password')}),
         ('Personal info', {'fields': ('full_name',)}),
-        ('Permissions', {'fields': ('admin','staff','active')}),
+        ('Permissions', {'fields': ('admin', 'staff', 'active')}),
     )
     add_fieldsets = (
         (None, {
@@ -30,6 +30,13 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.register(User, UserAdmin)
-admin.site.register(Profile)
+
+
+class UserProfile(admin.ModelAdmin):
+    model = Profile
+    list_display = ['full_name', 'nick_name']
+
+
+admin.site.register(Profile, UserProfile)
 # Remove Group Model from admin. We're not using it.
 admin.site.unregister(Group)

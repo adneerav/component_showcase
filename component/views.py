@@ -12,7 +12,10 @@ def home(request):
         "technology_list": _get_technology(),
         "components": _get_components(),
     }
-    return render(request, 'components/home.html', context=data)
+    if request.is_ajax():
+        return render(request, "components/list_item.html", context=data)
+    else:
+        return render(request, 'components/home.html', context=data)
 
 
 def search(request):
@@ -36,13 +39,22 @@ def search(request):
 
 def components(request, name):
     print(name)
-    qs_component_all = {
-        "components": _get_technology_components(technology_name=name),
-        'is_technology_wise': True,
-        'technology_detail': _get_technology_detail(technology_name=name),
-        "title": "{} Components".format(name)
-    }
-    return render(request, 'components/components_page.html', context=qs_component_all)
+    if request.is_ajax():
+        query_set_result = _get_components() if name.lower() == 'all' else _get_technology_components(
+            technology_name=name)
+        qs_component_all = {
+            "components": query_set_result,
+            "title": "{} Components".format(name)
+        }
+        return render(request, "components/list_item.html", context=qs_component_all)
+    else:
+        qs_component_all = {
+            "components": _get_technology_components(technology_name=name),
+            'is_technology_wise': True,
+            'technology_detail': _get_technology_detail(technology_name=name),
+            "title": "{} Components".format(name)
+        }
+        return render(request, 'components/components_page.html', context=qs_component_all)
 
 
 def component_list(request):
