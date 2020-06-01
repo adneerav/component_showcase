@@ -21,6 +21,7 @@ class UserManager(BaseUserManager):
         user_obj = self.model(
             email=self.normalize_email(email),
             username=username,
+            full_name=full_name,
         )
         user_obj.set_password(password)
         user_obj.staff = staff

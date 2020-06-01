@@ -63,6 +63,7 @@ class UserAdminCreationForm(forms.ModelForm):
         full_name = self.cleaned_data.get("full_name")
         if not full_name:
             raise forms.ValidationError("Full Name required.")
+        return full_name
 
     def save(self, commit=True):
         user = super(UserAdminCreationForm, self).save(commit=False)
