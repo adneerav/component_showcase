@@ -75,9 +75,7 @@ def detail_by_id(request, component_id):
             "detail": component_detail,
             "languages": language_list,
             "dev_detail": {
-                "name": "John",
-                "nickname": "Jimmy",
-                "team": "Yo Yo"
+		"name": ",".join([str(t) for t in component_detail.contributors.all()])
             }
         }
         return render(request, 'components/detail.html', data)
