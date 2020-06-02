@@ -40,9 +40,9 @@
 		            $("#comp_list_item_container").html(data)
 		        },
 		        error:function(data){
-                    if(data["status"] == 404){
-                        $("#comp_list_item_container").html("<h1>No components found.</h1>")
-                    }
+	                    if(data["status"] == 404){
+        	                $("#comp_list_item_container").html("<h1>No components found.</h1>")
+                	    }
 		        }
 		    });
     });
