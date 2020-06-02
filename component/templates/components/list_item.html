@@ -1,7 +1,18 @@
 {% for component in components %}
 <div class="col-lg-4 col-sm-4 col-xs-12 mb-tblt">
     <div class="conslt-list">
+        {% if component.banner_image%}
         <img src="{{ component.banner_image.url }}" alt=""/>
+        {% else %}
+
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg"
+             preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+             aria-label="Placeholder: {{component.component.name}}"><title>Placeholder</title>
+            <rect fill="#868e96" width="100%" height="100%">
+            </rect>
+            <text fill="#dee2e6" dy=".3em" x="50%" y="50%">{{component.component.name}}</text>
+        </svg>
+        {% endif %}
         <div class="conslt-lbl">
             <h3><a href="{% url 'comp_detail_by_id' component_id=component.id %}">{{component.component.name}}</a>
             </h3>
