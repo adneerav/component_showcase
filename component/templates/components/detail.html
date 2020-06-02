@@ -7,11 +7,6 @@
 <link href="{% static 'slider/themes/js-image-slider.css' %}" rel="stylesheet" type="text/css"/>
 <script src="{% static 'slider/themes/mcVideoPlugin.js' %}" type="text/javascript"></script>
 <script src="{% static 'slider/themes/js-image-slider.js' %}" type="text/javascript"></script>
-<script type="text/javascript">
-                if (!document.domain) alert("The video will not work properly if opening the page by local path. Please test this page through HTTP on a web or localhost server");
-
-
-</script>
 {% endblock %}
 {% block content %}
 
@@ -30,9 +25,9 @@
                 <div id="sliderFrame">
                     <div id="slider">
                         {% for image in images %}
-                                                <a class="lazyImage" href="{{image.image_url.url}}">{{image.image_url.url}}</a>
+                        <a class="lazyImage" href="{{image.image_url.url}}">{{image.image_url.url}}</a>
                         {% endfor %}
-                        <a class="video" href="http://www.youtube.com/watch?v=P0G_2tiivxE">
+                        <a class="video" href="https://www.youtube.com/watch?v=f1fHPqAYj5I">
                             <b data-src="{% static 'images/banner3.jpg' %}">Image Slider</b>
                         </a>
 
@@ -45,8 +40,9 @@
             <div class="card mb-4 languages-card">
                 <h5 class="card-header">Download Source</h5>
                 <div class="card-body">
-                    <a class="navbar-brand" href="{{detail.git_url}}"><img src="{% static 'images/github-logo.png' %}"
-                                                                           alt="Github Clone URL"/></a>
+                    <a class="navbar-brand" target="_blank" href="{{detail.git_url}}">
+                        <img src="{% static 'images/github-logo.png' %}"
+                             alt="Github Clone URL"/></a>
                 </div>
             </div>
             <!-- Technology Widget -->
