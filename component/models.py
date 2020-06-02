@@ -70,7 +70,7 @@ class DetailImage(models.Model):
     image_tag.allow_tags = True
 
     def __str__(self):
-        return self.component_detail_image.component
+        return self.component_detail_image.component.name
 
     class Meta:
         verbose_name = 'Component Image'

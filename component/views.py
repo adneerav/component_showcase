@@ -71,13 +71,13 @@ def detail_by_id(request, component_id):
         print(component_id)  # component_data
         component_detail = Detail.objects.get(pk=component_id)
         language_list = component_detail.language.all()
+        image_list = component_detail.images.all()
         data = {
             "detail": component_detail,
             "languages": language_list,
+            "images": image_list,
             "dev_detail": {
-                "name": "John",
-                "nickname": "Jimmy",
-                "team": "Yo Yo"
+                "name": ",".join([str(t) for t in component_detail.contributors.all()])
             }
         }
         return render(request, 'components/detail.html', data)

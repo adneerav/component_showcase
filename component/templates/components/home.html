@@ -1,9 +1,8 @@
 {% extends 'components/base/base_component.html' %}
 {% block content %}
+{% load static %}
 <div class="container">
-
     <div class="row">
-
         <div class="col-lg-3">
             <div class="technology-section">
                 <h3>Technology</h3>
@@ -30,7 +29,6 @@
 {% block footer %}
 <script type="text/javascript">
     $('.list-group-item').click(function(e) {
-    $('.list-group-item').
         e.preventDefault();
             $.ajax({
 		        type: 'POST',
@@ -42,7 +40,9 @@
 		            $("#comp_list_item_container").html(data)
 		        },
 		        error:function(data){
-		            console.log(data);
+                    if(data["status"] == 404){
+                        $("#comp_list_item_container").html("<h1>No components found.</h1>")
+                    }
 		        }
 		    });
     });
