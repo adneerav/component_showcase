@@ -24,9 +24,11 @@
                 <!--<img class="img-fluid rounded" src="{{detail.banner_image.url}}" alt="">-->
                 <div id="sliderFrame">
                     <div id="slider">
-                        {% for image in images %}
-                        <a class="lazyImage" href="{{image.image_url.url}}">{{image.image_url.url}}</a>
-                        {% endfor %}
+                        {% if images %}
+                            {% for image in images %}
+                                <a class="lazyImage" href="{{image.image_url.url}}">{{image.image_url.url}}</a>
+                            {% endfor %}
+                        {% endif %}
                         <a class="video" href="https://www.youtube.com/watch?v=f1fHPqAYj5I">
                             <b data-src="{% static 'images/banner3.jpg' %}">Image Slider</b>
                         </a>
