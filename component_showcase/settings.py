@@ -22,10 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'drc^l83u=ae3^)s%ai7+!q3dcg9#cmbn$%za1xd7ob#&8+6g=)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DEBUG = False
+ALLOWED_HOSTS = ["192.168.34.184", "127.0.0.1"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -93,11 +91,11 @@ WSGI_APPLICATION = 'component_showcase.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'component_showcase'),
+        'NAME': os.getenv('DB_NAME', 'hbcomponent'),
         'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'hbdev'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'root'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
-        'DB_PORT': os.getenv('DB_PORT', '3344'),
+        'DB_PORT': os.getenv('DB_PORT', '3306'),
     }
 }
 
