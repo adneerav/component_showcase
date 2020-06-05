@@ -10,7 +10,7 @@ nav{background: #0a57f4;}
 .search input::placeholder{ color: #ecf0f1; }
 .search input:focus{ border:0; outline: 0; box-shadow: 0; }
 .search .go_btn{ opacity: 0; position: absolute; right:  0px; height: 30px; width: 60px; line-height: 30px; text-align: center; font-size: 18px; font-weight: 600; color: #000; background: #17f3af; transition: all 0.5s; cursor: pointer;}
-.search.search_active .go_btn{ opacity: 1;}
+.search.search_active .go_btn{ opacity: 0;}
 .search_active_go_btn{ right: 10px !important; }
 .search_btn.search_close{width: 70px;}
 .search_btn.search_close::after{display: none;}

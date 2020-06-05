@@ -9,7 +9,7 @@
                 <div class="list-group">
                     <a href="{% url 'component_tech' 'All' %}" id="anchor_tech" class="list-group-item active">All</a>
                     {% for t in technology_list %}
-                    <a id="technology_item_tag" href="{% url 'component_tech' t.name %}" class="list-group-item">{{t.name }}</a>
+                     <a id="technology_item_tag" href="{% url 'component_tech' t.name %}" class="list-group-item">{{t.name }}</a>
                     {% endfor %}
                 </div>
             </div>
