@@ -1,4 +1,4 @@
-Django==2.2.12
+Django==2.2.13
 django-admin==2.0.1
 django-admin-interface==0.12.2
 django-admin-thumbnails==0.2.5
