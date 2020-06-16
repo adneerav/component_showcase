@@ -8,7 +8,7 @@ class UserSerializers(serializers.ModelSerializer):
         model = User
         fields = (
             "full_name", "email", "username",
-            "active",
+            "password", "staff",
         )
 
     def create(self, validated_data):
@@ -20,8 +20,8 @@ class UserSerializers(serializers.ModelSerializer):
             username=validated_data.pop("username"),
             password=password,
             full_name=validated_data.pop("full_name"),
-            active=validated_data.pop("active"),
-            admin=validated_data.pop("admin"),
+            active=True,
+            admin=False,
             staff=validated_data.pop("staff"),
         )
         return user

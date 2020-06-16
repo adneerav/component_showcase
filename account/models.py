@@ -125,4 +125,4 @@ class Profile(models.Model):
     personal_blog_url = models.CharField(max_length=500, help_text="Personal blog or website url.")
 
     def __str__(self):
-        return "{} aka {}".format(self.full_name, self.nick_name)
+        return self.full_name

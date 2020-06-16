@@ -13,14 +13,14 @@ class RegisterForm(forms.ModelForm):
         fields = ('email',)
 
     def clean_email(self):
-        email = self.cleaned_data.get('email')
+        email = self.cleaned_data.get('email', )
         qs = User.objects.filter(email=email)
         if qs.exists():
             raise forms.ValidationError("email is taken")
         return email
 
     def clean_username(self):
-        username = self.cleaned_data.get('username')
+        username = self.cleaned_data.get('username', )
         if username is None:
             raise forms.ValidationError("Username required")
         if User.objects.filter(username=username).exists():
@@ -29,8 +29,8 @@ class RegisterForm(forms.ModelForm):
 
     def clean_confirm_password(self):
         # Check that the two password entries match
-        password = self.cleaned_data.get("password")
-        confirm_password = self.cleaned_data.get("confirm_password")
+        password = self.cleaned_data.get("password", )
+        confirm_password = self.cleaned_data.get("confirm_password", )
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError("Passwords don't match")
         return confirm_password
@@ -45,7 +45,7 @@ class UserAdminCreationForm(forms.ModelForm):
         fields = ('full_name', 'email', 'username', 'password', 'full_name')
 
     def clean_username(self):
-        username = self.cleaned_data.get('username')
+        username = self.cleaned_data.get('username', )
         if username is None:
             raise forms.ValidationError("Username required")
         if User.objects.filter(username=username).exists():
@@ -53,21 +53,23 @@ class UserAdminCreationForm(forms.ModelForm):
         return username
 
     def clean_confirm_password(self):
-        password = self.cleaned_data.get('password')
-        confirm_password = self.cleaned_data.get('confirm_password')
+        password = self.cleaned_data.get('password', )
+        confirm_password = self.cleaned_data.get('confirm_password', )
         if password and confirm_password and password != confirm_password:
             raise forms.ValidationError("Password & Confirm Password does not match.")
         return confirm_password
 
     def clean_full_name(self):
-        full_name = self.cleaned_data.get("full_name")
+        full_name = self.cleaned_data.get("full_name", )
         if not full_name:
             raise forms.ValidationError("Full Name required.")
         return full_name
 
     def save(self, commit=True):
         user = super(UserAdminCreationForm, self).save(commit=False)
+        user.staff = True
         user.set_password(self.cleaned_data["password"])
+
         if commit:
             user.save()
         return user
@@ -82,7 +84,7 @@ class UserAdminChangeForm(forms.ModelForm):
         fields = ('email', 'password', 'active', 'admin', 'full_name')
 
     def clean_full_name(self):
-        full_name = self.cleaned_data.get("full_name")
+        full_name = self.cleaned_data.get("full_name", )
         if not full_name:
             raise forms.ValidationError("Full name required.")
         return full_name

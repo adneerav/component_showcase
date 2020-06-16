@@ -12,18 +12,17 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_auth',  # new!
     'rest_framework.authtoken',
+    'rest_framework_swagger',
     'component.apps.ComponentConfig',
     'account.apps.AccountConfig',
     'language.apps.LanguageConfig',
     'technology.apps.TechnologyConfig',
 ]
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'account.backend.CustomAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
     ],
 }
 AUTH_USER_MODEL = 'account.User'
