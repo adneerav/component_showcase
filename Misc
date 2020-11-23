@@ -1,5 +1,6 @@
 from component.models import Component, Detail, DetailImage
 from technology.models import Technology
+from django.db.models import Q
 
 
 # get Component list by component Primary key

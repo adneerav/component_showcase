@@ -4,13 +4,14 @@ from django.db import models
 # Create your models here.
 from django.utils.safestring import mark_safe
 
+from account.models import Profile
 from language.models import Language
 from technology.models import Technology
 from django.utils.translation import gettext_lazy as _
 
 
 class Component(models.Model):
-    name = models.CharField(max_length=25, blank=False, null=False)
+    name = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
         return self.name
@@ -24,6 +25,8 @@ class Detail(models.Model):
     component = models.ForeignKey(Component, on_delete=models.CASCADE, related_name='components_detail',
                                   related_query_name='component_detail', null=False, blank=False)
     technology = models.ForeignKey(Technology, on_delete=models.CASCADE, related_name="technologies")
+    contributors = models.ManyToManyField(Profile, related_name="component_contributors",
+                                          help_text="Developers who worked on component")
     language = models.ManyToManyField(Language, related_name="languages")
     banner_image = models.ImageField(upload_to='uploads/component/images/banner/', blank=True, null=True)
     description = models.TextField(blank=False, null=False)
@@ -43,6 +46,9 @@ class Detail(models.Model):
 
     def get_languages(self):
         return ",".join([str(t) for t in self.language.all()])
+
+    def get_contributor_name(self):
+        return self.contributors
 
     class Meta:
         verbose_name = 'Component Detail'
@@ -64,7 +70,7 @@ class DetailImage(models.Model):
     image_tag.allow_tags = True
 
     def __str__(self):
-        return self.component_detail_image.component
+        return self.component_detail_image.component.name
 
     class Meta:
         verbose_name = 'Component Image'

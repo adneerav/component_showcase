@@ -1,0 +1,88 @@
+{% extends 'components/base/base_component.html' %}
+{% load static %}
+{% block title_content%}
+<title>{{detail.component.name}} for {{detail.technology.name}} in {{detail.get_languages}}</title>
+{% endblock %}
+{% block header_content %}
+<link href="{% static 'slider/themes/js-image-slider.css' %}" rel="stylesheet" type="text/css"/>
+<script src="{% static 'slider/themes/mcVideoPlugin.js' %}" type="text/javascript"></script>
+<script src="{% static 'slider/themes/js-image-slider.js' %}" type="text/javascript"></script>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="post-wrapper">
+                <div class="post-heading">
+                    <h1>{{detail.component.name}}</h1>
+                </div>
+                <hr>
+                <!-- Post Content -->
+                {{detail.description | linebreaks}}
+                <hr>
+                <div id="sliderFrame">
+                    <div id="slider">
+                        {% if images %}
+                            {% for image in images %}
+                                <a class="lazyImage" href="{{image.image_url.url}}">{{image.image_url.url}}</a>
+                            {% endfor %}
+                        {% endif %}
+                        <a class="video" href="https://www.youtube.com/watch?v=f1fHPqAYj5I">
+                            <b data-src="{% static 'images/banner3.jpg' %}">Image Slider</b>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+            <div class="card mb-4 languages-card">
+                <h5 class="card-header">Download Source</h5>
+                <div class="card-body">
+                    <a class="navbar-brand" target="_blank" href="{{detail.git_url}}">
+                        <img src="{% static 'images/github-logo.png' %}"
+                             alt="Github Clone URL"/></a>
+                </div>
+            </div>
+            <!-- Technology Widget -->
+            <div class="card mb-4 languages-card">
+                <h5 class="card-header">{% if languages.count == 1 %}Technology{% else %}Technologies{% endif %}</h5>
+                <div class="card-body">
+                    <ul>
+                        <li>
+                            {{detail.technology.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Lnaugage Widget -->
+            <div class="card mb-4 languages-card">
+                <h5 class="card-header">{% if languages.count == 1 %}Language{% else %}Languages{% endif %}</h5>
+                <div class="card-body">
+                    <ul>
+                        {% for language in languages %}
+                        <li>
+                            {{language.name}}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Side Widget -->
+            <div class="card mb-4 languages-card">
+                <h5 class="card-header">Contributors & Updates</h5>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>Posted On:</strong> on {{ detail.added_date|date:"M d, Y" }}</li>
+                        <li><strong>Updated On:</strong> on {{ detail.updated_date|date:"M d, Y" }}</li>
+                        <li><strong>By:</strong> {{dev_detail.name}}</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

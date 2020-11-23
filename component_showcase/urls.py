@@ -14,15 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
+from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_swagger.views import get_swagger_view
 
 admin.site.site_header = 'HiddenBrains Component Admin Panel'
-
+schema_view = get_swagger_view(title='HiddenBrains ComponentShowcase api')
 urlpatterns = [
+    url(r'^docs/', schema_view),
     path('admin/', admin.site.urls),
     path('', include('component.urls')),
+    path('', include('account.urls')),
+    path('', include('technology.urls')),
+    url(r'^auth/jwt/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    url(r'^auth/jwt/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 urlpatterns = urlpatterns + \
